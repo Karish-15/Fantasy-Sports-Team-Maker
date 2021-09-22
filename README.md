@@ -13,3 +13,5 @@
 Currently the teams are sorted according to sum of performance points. I'm still working on something to sort the teams in a much more appropriate manner.
 
 I'm working to add many more features to this project, will update this repo soon. :D
+
+![Alt Text](https://tenor.com/view/wink-teeth-dentist-big-smile-big-teeth-gif-12706835)
