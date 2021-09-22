@@ -1,4 +1,4 @@
-import json, time
+import json
 from functions import findCombinations, giveCaptain
 
 start_time = time.time()
