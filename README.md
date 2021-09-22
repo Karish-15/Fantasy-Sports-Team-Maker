@@ -8,6 +8,8 @@
 
 -**main.py**: makes use of functions to return us a list that contains all formed teams. The teams are also sorted in descending order.
 
+---
+
 Currently the teams are sorted according to sum of performance points. I'm still working on something to sort the teams in a much more appropriate manner.
 
 I'm working to add many more features to this project, will update this repo soon. :D
