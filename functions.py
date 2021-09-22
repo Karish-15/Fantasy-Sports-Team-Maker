@@ -1,5 +1,4 @@
 from itertools import combinations
-from statistics import median
 
 def findCombinations(lst, K, N): 
     minbat, minbowl, minall, minwk = 3, 3, 3, 1

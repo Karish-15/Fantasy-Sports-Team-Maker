@@ -1,6 +1,5 @@
 import json, time
 from functions import findCombinations, giveCaptain
-from statistics import median
 
 start_time = time.time()
 filename = 'teams.json'
