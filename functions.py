@@ -20,6 +20,6 @@ def positioncheck(team, minbat,minbowl,minall,minwk): # team is a tuple of dicti
     return (bat >= minbat and bat <=6) and (bowl >= minbowl and bowl<=6) and (all_count>=minall and all_count<=4) and (wk>=minwk and wk<=2)
 
 def giveCaptain(team):
-    team.sort(key = lambda x: x['performance'])
+    team.sort(key = lambda x: x['performance'], reverse = True)
     return [team[0]['name'], team[1]['name']]
 
