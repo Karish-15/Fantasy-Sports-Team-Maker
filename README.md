@@ -15,3 +15,4 @@ Currently the teams are sorted according to sum of performance points. I'm still
 I'm working to add many more features to this project, will update this repo soon :D
 
 ![Alt Text](https://media.giphy.com/media/LllA2dKt1qZuE/giphy.gif?cid=ecf05e47x7id135827j1im8uxkii9s77x1jivdx80uqzass3&rid=giphy.gif&ct=g)
+
