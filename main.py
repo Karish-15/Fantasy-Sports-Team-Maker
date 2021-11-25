@@ -1,5 +1,6 @@
 import json, time
 from functions import findCombinations, giveCaptain
+import pandas
 
 start_time = time.time()
 filename = 'teams.json'
@@ -15,6 +16,10 @@ for team in allteams:
     print(' ' + str(sum([y['performance'] for y in team])), end = ' ')
     captains = giveCaptain(team)
     print('Captain: ' + captains[0] + ' VC: ' + captains[1])
+    
+    
     index +=1
+
+
 
 print('Time Taken to form teams: ' + str(time.time() - start_time) + ' seconds')
