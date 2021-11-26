@@ -2,7 +2,7 @@ from itertools import combinations
 
 def findCombinations(lst, K, N): 
     minbat, minbowl, minall, minwk = 3, 3, 3, 1
-    all_comb = [list(team) for team in combinations(lst,N) if ((sum([temp['points'] for temp in team]) <= (K-9) and sum([temp['points'] for temp in team]) >= 88) and positioncheck(team, minbat, minbowl, minall, minwk))]
+    all_comb = [list(team) for team in combinations(lst,N) if ((sum([temp['points'] for temp in team]) <= (K) and sum([temp['points'] for temp in team]) >= 97) and positioncheck(team, minbat, minbowl, minall, minwk))]
     all_comb.sort(key = lambda x: sum([y['performance'] for y in x]), reverse=True)
     return all_comb
 

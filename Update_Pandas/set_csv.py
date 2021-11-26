@@ -2,10 +2,6 @@ from data_model import Database, Player
 import pandas as pd
 import statistics
 
-#Return Row
-# print(Database.df.loc(['BUMRAH']))
-
-
 
 for index, row in Database.df.iterrows():
     # index will be player name here, row is preceding columns
@@ -30,7 +26,7 @@ for index, row in Database.df.iterrows():
 
     standard_deviation = statistics.pstdev(player_values) # Calculate standard deviation    
 
-    median = statistics.median(player_values)
+    median = statistics.median(player_values) # Calculate median from player's performance from recent matches
 
     # Update values in Dataframe
     Database.df.loc[index, 'MEAN'] = mean
