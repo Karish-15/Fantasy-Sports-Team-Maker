@@ -11,11 +11,11 @@
   Choose the column which you want to use as performance for each player and put it as the value for `temp_dict['performance']`. You can add data for more matches, just make sure that the said column is updated for the newly added matches.
 
 - **main.py**: makes use of functions to return us a list that contains all formed teams. The teams are also sorted in descending order of sum of each player's **performance** **points**.
-- **sample.csv**: Contains data that will be used to form JSONs and eventually used for forming teams. After running `main.py`, a new file **new_data.csv** will be formed which will have updated values for *FREQ* column which is the number of times a player was included in a formed team. Everything else in **new_data.csv** will be identical to **sample.csv**
+- **sample.csv**: Contains data that will be used to form JSONs and eventually used for forming teams. After running `main.py`, a new file **new_data.csv** will be formed which will have updated values for *FREQ* column which is the number of times a player was included in a formed team. Everything else in **new_data.csv** will be identical to **sample.csv**.
 
 ### Update_Pandas:
 
-- **data_model.py**: defines `player` and `Database` classes
+- **data_model.py**: defines `player` and `Database` classes.
 - **set_csv.py**: Prepare the **sample.csv** file for it to be used by **prepare_json.py**. Adds *mean, standard deviation and median* column which will be based on player's performance from recent matches.
 
 ---
