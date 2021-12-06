@@ -1,8 +1,16 @@
 from itertools import combinations
 
-def findCombinations(lst, K, N): 
+def findCombinations(lst, K, N, first_team, second_team): 
     minbat, minbowl, minall, minwk = 3, 3, 3, 1
-    all_comb = [list(team) for team in combinations(lst,N) if ((sum([temp['points'] for temp in team]) <= (K) and sum([temp['points'] for temp in team]) >= 97) and positioncheck(team, minbat, minbowl, minall, minwk))]
+    all_comb = [
+                list(team) 
+                for team in combinations(lst,N) 
+                if ((sum([temp['points'] for temp in team]) <= (K) 
+                    and sum([temp['points'] for temp in team]) >= 97 ) 
+                    and filterTeams(team, first_team, second_team) 
+                    and positioncheck(team, minbat, minbowl, minall, minwk))
+                ]
+
     all_comb.sort(key = lambda x: sum([y['performance'] for y in x]), reverse=True)
     return all_comb
 
@@ -23,3 +31,18 @@ def giveCaptain(team):
     team.sort(key = lambda x: x['performance'], reverse = True)
     return [team[0]['name'], team[1]['name']]
 
+def filterTeams(team, first_team, second_team):
+    first_count, second_count = 0, 0
+    team_eligible = True
+
+    for player in team:
+        if(first_count>6 or second_count>6):
+            team_eligible = False
+
+        if(player['team'] == first_team):
+            first_count += 1
+
+        elif(player['team'] == second_team):
+            second_count += 1
+    
+    return team_eligible
