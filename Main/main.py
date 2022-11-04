@@ -55,6 +55,6 @@ for team in allteams:
 if __name__ == '__main__':
     print(new_df)
 
-    new_df.to_csv('new_data.csv')
+    # new_df.to_csv('new_data.csv')
 
     print('Time Taken to form teams: ' + str(time.time() - start_time) + ' seconds')

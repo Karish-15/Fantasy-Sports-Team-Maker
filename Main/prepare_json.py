@@ -29,6 +29,4 @@ for player in players:
 print(lst)
 
 with open(filename, 'w') as fp:
-    json.dump(lst,fp)
-
-
+        json.dump(lst,fp)
