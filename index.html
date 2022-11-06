@@ -1,0 +1,46 @@
+<html>
+<head>
+	
+<title> Team Maker</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<style>
+	pre {
+	background-color: ghostwhite;
+	border: 1px solid silver;
+	padding: 10px 20px;
+	margin: 20px;
+	border-radius: 4px;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+</head>
+<body class="container">
+	
+<br>
+<h3> Team Maker </h3>
+</br>
+<form id="form-file" method="post" enctype="multipart/form-data">
+    
+	<div class="form-group">
+        <label for="csvfile" class="control-label">CSV File</label>
+		<div >
+        <input type="file" class="form-control" name="file" id="file" accept=".csv">
+		</div>
+		eg. MYDATA.csv
+    </div>
+
+	<div class="form-group">
+	<label for="login" class="control-label "></label>
+    <div >
+    <button type="submit" class="btn btn-primary">Upload</button>
+	</div>
+	</div>
+</form>
+
+<script src="./client.js"></script>
+</div>
+<div class="col-md-20">
+<pre><code id='teams'></code></pre>
+</div>
+</body>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<title> Import</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body class="container">
+<br>
+<h3> Import CSV </h3>
+</br>
+<form class="form-file" method="POST" enctype="multipart/form-data" onsubmit="handleFileForm()">
+    
+	<div class="form-group">
+        <label for="csvfile" class="control-label col-xs-2">Name of the file</label>
+		<div class="col-xs-3">
+        <input type="file" class="form-control" name="file" id="file" accept=".csv">
+		</div>
+		eg. MYDATA.csv
+    </div>
+
+	<div class="form-group">
+	<label for="login" class="control-label col-xs-2"></label>
+    <div class="col-xs-3">
+    <button type="submit" class="btn btn-primary">Upload</button>
+	</div>
+	</div>
+</form>
+<div id="content"></div>
+<script src="./client.js"></script>
+</div>
+
+</body>
