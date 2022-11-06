@@ -1,7 +1,5 @@
-from data_model import Database, Player
-import pandas as pd
+from .data_model import Database
 import statistics
-
 
 for index, row in Database.df.iterrows():
     # index will be player name here, row is preceding columns
@@ -33,12 +31,4 @@ for index, row in Database.df.iterrows():
     Database.df.loc[index, 'STANDARD'] = standard_deviation
     Database.df.loc[index, 'MEDIAN'] = median
     
-
-if __name__ == '__main__':
-    print(Database.df)
-    Database.save_csv('sample.csv')
-
-
-
-
-    
+Database.save_csv('sample.csv')

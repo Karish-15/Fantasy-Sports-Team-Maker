@@ -1,7 +1,7 @@
 from itertools import combinations
 
-def findCombinations(lst, K, N, first_team, second_team): 
-    minbat, minbowl, minall, minwk = 3, 3, 3, 1
+def findCombinations(lst, K, N, first_team, second_team, minpositions): 
+    minbat, minbowl, minall, minwk = minpositions['bat'], minpositions['bowl'], minpositions['all'], minpositions['wk']
     all_comb = [
                 list(team) 
                 for team in combinations(lst,N) 
@@ -46,3 +46,16 @@ def filterTeams(team, first_team, second_team):
             second_count += 1
     
     return team_eligible
+
+def givePlayerPositions(team):
+    bat, bowl, all_count, wk = 0,0,0,0
+    for player in team:
+        if(player['pos'] == 'BAT'):
+            bat += 1
+        elif(player['pos'] == 'BOWL'):
+            bowl += 1
+        elif(player['pos'] == 'ALL'):
+            all_count += 1
+        elif(player['pos'] == 'WK'):
+            wk += 1
+    return {'bat': bat, 'bowl': bowl, 'all':all_count, 'wk': wk}

@@ -1,7 +1,5 @@
 import pandas as pd
 
-
-
 class Database:
     df = pd.read_csv('sample.csv')
     df.fillna(0, inplace=True)
@@ -28,16 +26,3 @@ class Player:
 
     def get_total(self):
         return Database.df['total'][self.name]
-
-if __name__ == '__main__':
-    player = Player('RAHUL', 'BOWL', 'A')
-
-    print(player.standard_deviation)
-
-
-
-
-
-
-
-
