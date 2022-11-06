@@ -1,48 +1,47 @@
 const content = document.getElementById("content")
-const fileform = document.getElementById("file")
+const fileform = document.getElementById("form-file")
 base_url = "https://localhost:8000/api"
 
 if (fileform){
     fileform.addEventListener('submit', handleFileForm)
 }
 
-function handleFileForm(event){
+Object.prototype.prettyPrint = function(){
+    var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+    var replacer = function(match, pIndent, pKey, pVal, pEnd) {
+        var key = '<span class="json-key" style="color: brown">',
+            val = '<span class="json-value" style="color: navy">',
+            str = '<span class="json-string" style="color: olive">',
+            r = pIndent || '';
+        if (pKey)
+            r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+        if (pVal)
+            r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+        return r + (pEnd || '');
+    };
+
+    return JSON.stringify(this, null, 3)
+        .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+        .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(jsonLine, replacer);
+}
+
+async function handleFileForm(event){
     console.log(event)
     event.preventDefault()
     console.log("hello")
     const fileEndpoint = `${base_url}/formteams`
-    // const formData = newFormData(fileform)
-    
-    // content.innerHTML = "<p>Hello World</p>"
-    // const options = {
-    //     method: "POST",
-    //     enctype: "multipart/form-data"
-    // }
-    // fetch(base_url, options)
-    // .then(response=>{
-    //     consolve.log(response)
-    //     return response.json()
-    // })
-    // .then(response=>{
-    //     console.log(response)
-    // })
-    // .catch(err=>{
-    //     console.log('err', err)
-    // })
-    var formdata = new FormData(fileform);
-    // formdata.append("file", fileInput.files[0], "/D:/Coding/Projects/Dream11-py/Fantasy-Sports-Team-Maker/backend/Main/sample.csv");
-    console.log(formData)
-    var requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
+    const formdata = new FormData(fileform)
+    console.log(formdata)
+    const requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
     };
 
-    fetch("http://localhost:8000/api/formteams", requestOptions)
-    .then(response => response.text())
-    .then(result => {
-        console.log(result)
-        content.innerHTML = "<p>Hello world</p>"
-    })
-    .catch(error => console.log('error', error));
+    const res = await fetch("http://localhost:8000/api/formteams", requestOptions)
+    const result = await res.json()
+    document.getElementById('teams').innerHTML = result.prettyPrint()
+    console.log(result)
 }
+
