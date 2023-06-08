@@ -1,10 +1,19 @@
 import pandas as pd
 import io
+from dotenv import load_dotenv
+import os
+import redis
 
 from Main.makeTeams import makeTeams
 
 def makeDataframe(file_obj):
     dataframe = pd.read_csv(io.StringIO(file_obj.read().decode('utf-8')), delimiter=',')
+    return dataframe
+
+def makeDataframe_list(list):
+    for x in list:
+        x['FREQ'] = 0
+    dataframe = pd.DataFrame(list)
     return dataframe
 
 # Also check if all columns are present or not
@@ -33,3 +42,14 @@ def form_teams(df, request_data):
     }
 
     return response
+
+def give_sample_data():
+    load_dotenv()
+    r = redis.Redis(
+        host=os.environ.get('REDIS_HOST'),
+        port=10370,
+        password=os.environ.get('REDIS_PASSWORD'))
+
+    l = list((r.json().get(name='players')['players']))
+
+    return l;

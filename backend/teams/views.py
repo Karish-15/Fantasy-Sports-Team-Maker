@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import APIView
 
-from .giveTeams import csv_valid, form_teams, makeDataframe
-
+from .giveTeams import csv_valid, form_teams, makeDataframe, makeDataframe_list, give_sample_data
+# from .redis_sample import give_sample_data
 
 class Index(APIView):
     def get(self, request):
@@ -14,12 +14,21 @@ class makeTeamsAPIView(APIView):
         return Response({"Error": "GET requests not allowed"}, status=400)
 
     def post(self, request):
-        if request.FILES['file']:
+        if request.FILES:
             file_object = request.FILES['file']
-            df = makeDataframe(file_object)
+            if(file_object):
+                df = makeDataframe(file_object)
+                print(df)
+            
             if not csv_valid(file_object, df):
                 return Response({"Error": "CSV file not compatible"})
-            request_data = {
+                
+        else:
+            sample_data = give_sample_data()
+            df = makeDataframe_list(sample_data)
+            print(df)
+
+        request_data = {
                 'minpositions': {
                     'bat': int(request.data.get('bat', 0)), 
                     'bowl':  int(request.data.get('bowl', 0)), 
@@ -27,10 +36,9 @@ class makeTeamsAPIView(APIView):
                     'wk':  int(request.data.get('wk', 0))
                     }
                 }
-            results = form_teams(df, request_data)
-            if not len(results['Teams']):
-                return Response({"Status": "No teams could be formed with the given data"})
+        results = form_teams(df, request_data)
+        print('teams formed')
+        if not len(results['Teams']):
+            return Response({"Status": "No teams could be formed with the given data"})
             
-            return Response(results)
-        else:
-            return Response({"Bad file": "Uploaded file not working"}, status=400)
+        return Response(results)
