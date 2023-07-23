@@ -1,6 +1,6 @@
 const content = document.getElementById("content")
 const fileform = document.getElementById("form-file")
-base_url = "https://localhost:8000/api"
+base_url = "http://localhost:8000/api/formteams"
 
 if (fileform){
     fileform.addEventListener('submit', handleFileForm)

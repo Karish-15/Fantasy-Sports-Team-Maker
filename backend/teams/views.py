@@ -14,18 +14,20 @@ class makeTeamsAPIView(APIView):
         return Response({"Error": "GET requests not allowed"}, status=400)
 
     def post(self, request):
+        
         if request.FILES:
+            
             file_object = request.FILES['file']
             if(file_object):
                 df = makeDataframe(file_object)
-                print(df)
+                print(df.to_dict())
             
             if not csv_valid(file_object, df):
                 return Response({"Error": "CSV file not compatible"})
                 
         else:
-            sample_data = give_sample_data()
-            df = makeDataframe_list(sample_data)
+            df = give_sample_data()
+            
             print(df)
 
         request_data = {
