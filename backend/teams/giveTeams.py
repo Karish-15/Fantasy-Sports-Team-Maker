@@ -52,3 +52,14 @@ def give_sample_data():
 
     df = pd.DataFrame.from_dict(sample_data)
     return df
+
+def give_sample_data_redis():
+    load_dotenv()
+    r = redis.Redis(
+        host=os.environ.get('REDIS_HOST'),
+        port=10370,
+        password=os.environ.get('REDIS_PASSWORD'))
+
+    l = list((r.json().get(name='players')['players']))
+
+    return l;
